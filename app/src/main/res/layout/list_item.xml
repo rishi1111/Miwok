@@ -6,19 +6,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:baselineAligned="false">
 
     <ImageView
         android:id="@+id/imageView"
 
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+         android:background="@color/tan_background"
+        android:layout_width="@dimen/list_item_height"
+        android:layout_height="@dimen/list_item_height"
         android:contentDescription="relevantImage"
         android:paddingRight="16dp"
         android:paddingStart="16dp"
         android:paddingTop="10dp"
-        android:src="@mipmap/ic_launcher" />
+        />
 
 
 
@@ -27,27 +28,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-
-    android:layout_marginLeft="0dp"
-    android:layout_marginTop="16dp"
-    android:baselineAligned="false">
-
+    android:layout_height="@dimen/list_item_height"
+    android:padding="16dp"
+    android:layout_weight="1"
+        android:id="@+id/wordLinearLayout">
 
 
-    <TextView
-        android:id="@+id/miwokText"
-        android:layout_width="437dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:text="lutti" />
+        <TextView
+            android:id="@+id/miwokText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="TextView"
+            tools:text="lutti"
+            android:layout_weight="1"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_gravity="bottom"
+            />
 
-    <TextView
-        android:id="@+id/englishText"
-        android:layout_width="411dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:text="one" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/englishText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="top"
+
+            android:text="TextView"
+            tools:text="one"
+            android:layout_weight="1"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            />
+    </LinearLayout>
 
 </LinearLayout>

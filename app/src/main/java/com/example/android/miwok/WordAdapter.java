@@ -12,19 +12,25 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static com.example.android.miwok.R.id.imageView;
+
 /**
  * Created by Rishi on 12-Mar-17.
  */
 
+
+
 public class WordAdapter extends ArrayAdapter<Word> {
 
-
-    public WordAdapter(Activity context, ArrayList<Word> words) {
+    private int mColorResourceId;
+    public WordAdapter(Activity context, ArrayList<Word> words,int colorResourceId) {
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
         // the second argument is used when the ArrayAdapter is populating a single TextView.
         // Because this is a custom adapter for two TextViews and an ImageView, the adapter is not
         // going to use this second argument, so it can be any value. Here, we used 0.
+
         super(context, 0, words);
+        mColorResourceId=colorResourceId;
     }
 
 
@@ -37,6 +43,8 @@ public class WordAdapter extends ArrayAdapter<Word> {
                     R.layout.list_item, parent, false);
         }
 
+
+
         Word currentWord = getItem(position);
 
         TextView defaultTextView = (TextView) listItemView.findViewById(R.id.englishText);
@@ -46,14 +54,21 @@ public class WordAdapter extends ArrayAdapter<Word> {
         TextView miwokTextView = (TextView) listItemView.findViewById(R.id.miwokText);
         miwokTextView.setText(currentWord.getMiwokTranslation());
 
-
-        ImageView iconView = (ImageView) listItemView.findViewById(R.id.imageView);
-
-        iconView.setImageResource(currentWord.getImageResourceId());
+        ImageView iconView = (ImageView) listItemView.findViewById(imageView);
+        if(currentWord.hasImage()) {
 
 
+            iconView.setImageResource(currentWord.getImageResourceId());
+            iconView.setVisibility(View.VISIBLE);
+        }
+        else{
+            iconView.setVisibility(View.GONE);
+        }
 
 
+
+        View wordLayout = (View) listItemView.findViewById(R.id.wordLinearLayout);
+        wordLayout.setBackgroundResource(mColorResourceId);
 
 
        return listItemView;
